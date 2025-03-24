@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice of Customer (VOC) Template</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .instructions {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+		
+		.logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 200px;
+            height: auto;
+        }
+		
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        table, th, td {
+            border: 1px solid #e0e0e0;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 500;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #edf7ff;
+            border: 1px solid #d4e6f1;
+            border-radius: 5px;
+            display: none;
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        textarea {
+            height: 60px;
+            resize: vertical;
+        }
+        .sentiment-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+        .sentiment-column {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+        }
+        .sentiment-column input {
+            width: 60px;
+            text-align: center;
+        }
+        .section-header {
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin-top: 20px;
+            font-weight: bold;
+            border-left: 4px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Voice of Customer (VOC) Template</h1>
+		<div class="logo">
+            <!-- Replace with your actual logo URL -->
+            <img src="../calculators/thecscafe.png" alt="The CS Cafe Logo">
+        </div>
+        
+        <div class="instructions">
+            <p><strong>Instructions:</strong> Use this template to create an executive summary of customer feedback. Complete each section to provide a comprehensive overview of customer sentiment, trends, and required actions.</p>
+            <p><strong>Frequency:</strong> Monthly or quarterly</p>
+        </div>
+        
+        <div class="section-header">Executive Summary</div>
+        <table>
+            <tr>
+                <td><strong>Reporting Period:</strong></td>
+                <td><input type="text" id="reportingPeriod" placeholder="e.g., Q2 2025"></td>
+            </tr>
+            <tr>
+                <td><strong>Prepared By:</strong></td>
+                <td><input type="text" id="preparedBy" placeholder="Your name"></td>
+            </tr>
+            <tr>
+                <td><strong>Date Prepared:</strong></td>
+                <td><input type="date" id="preparedDate"></td>
+            </tr>
+            <tr>
+                <td><strong>Summary Statement:</strong></td>
+                <td><textarea id="summaryStatement" placeholder="Brief 2-3 sentence overview of customer sentiment"></textarea></td>
+            </tr>
+        </table>
+        
+        <div class="section-header">Customer Sentiment Overview</div>
+        <div class="sentiment-container">
+            <div class="sentiment-column">
+                <p><strong>Positive</strong></p>
+                <input type="number" id="positivePercent" placeholder="%" min="0" max="100">
+            </div>
+            <div class="sentiment-column">
+                <p><strong>Neutral</strong></p>
+                <input type="number" id="neutralPercent" placeholder="%" min="0" max="100">
+            </div>
+            <div class="sentiment-column">
+                <p><strong>Negative</strong></p>
+                <input type="number" id="negativePercent" placeholder="%" min="0" max="100">
+            </div>
+        </div>
+        
+        <div class="section-header">Key Feedback Trends</div>
+        <table id="trendsTable">
+            <thead>
+                <tr>
+                    <th>Trend</th>
+                    <th>Sentiment</th>
+                    <th>Frequency</th>
+                    <th>Business Impact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" placeholder="e.g., Onboarding process" class="trend-input"></td>
+                    <td>
+                        <select class="sentiment-input">
+                            <option value="">Select</option>
+                            <option value="Positive">Positive</option>
+                            <option value="Neutral">Neutral</option>
+                            <option value="Negative">Negative</option>
+                            <option value="Mixed">Mixed</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="frequency-input">
+                            <option value="">Select</option>
+                            <option value="Rare">Rare</option>
+                            <option value="Occasional">Occasional</option>
+                            <option value="Common">Common</option>
+                            <option value="Frequent">Frequent</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="impact-input">
+                            <option value="">Select</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Critical">Critical</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="e.g., Feature usability" class="trend-input"></td>
+                    <td>
+                        <select class="sentiment-input">
+                            <option value="">Select</option>
+                            <option value="Positive">Positive</option>
+                            <option value="Neutral">Neutral</option>
+                            <option value="Negative">Negative</option>
+                            <option value="Mixed">Mixed</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="frequency-input">
+                            <option value="">Select</option>
+                            <option value="Rare">Rare</option>
+                            <option value="Occasional">Occasional</option>
+                            <option value="Common">Common</option>
+                            <option value="Frequent">Frequent</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="impact-input">
+                            <option value="">Select</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Critical">Critical</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="e.g., Support response time" class="trend-input"></td>
+                    <td>
+                        <select class="sentiment-input">
+                            <option value="">Select</option>
+                            <option value="Positive">Positive</option>
+                            <option value="Neutral">Neutral</option>
+                            <option value="Negative">Negative</option>
+                            <option value="Mixed">Mixed</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="frequency-input">
+                            <option value="">Select</option>
+                            <option value="Rare">Rare</option>
+                            <option value="Occasional">Occasional</option>
+                            <option value="Common">Common</option>
+                            <option value="Frequent">Frequent</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="impact-input">
+                            <option value="">Select</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Critical">Critical</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="section-header">Priority Action Items</div>
+        <table id="actionsTable">
+            <thead>
+                <tr>
+                    <th>Action Item</th>
+                    <th>Department Owner</th>
+                    <th>Priority</th>
+                    <th>Target Completion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" placeholder="Action item description" class="action-input"></td>
+                    <td>
+                        <select class="owner-input">
+                            <option value="">Select</option>
+                            <option value="Product">Product</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="CS">Customer Success</option>
+                            <option value="Sales">Sales</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Support">Support</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="priority-input">
+                            <option value="">Select</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Urgent">Urgent</option>
+                        </select>
+                    </td>
+                    <td><input type="date" class="target-date"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="Action item description" class="action-input"></td>
+                    <td>
+                        <select class="owner-input">
+                            <option value="">Select</option>
+                            <option value="Product">Product</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="CS">Customer Success</option>
+                            <option value="Sales">Sales</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Support">Support</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="priority-input">
+                            <option value="">Select</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Urgent">Urgent</option>
+                        </select>
+                    </td>
+                    <td><input type="date" class="target-date"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="section-header">Quarter-over-Quarter Comparison</div>
+        <table>
+            <tr>
+                <td><strong>Previous Period:</strong></td>
+                <td><input type="text" id="previousPeriod" placeholder="e.g., Q1 2025"></td>
+            </tr>
+            <tr>
+                <td><strong>Overall Sentiment Trend:</strong></td>
+                <td>
+                    <select id="sentimentTrend">
+                        <option value="">Select</option>
+                        <option value="Improved">Improved</option>
+                        <option value="Stable">Stable</option>
+                        <option value="Declined">Declined</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Most Improved Area:</strong></td>
+                <td><input type="text" id="improvedArea"></td>
+            </tr>
+            <tr>
+                <td><strong>Area Needing Most Attention:</strong></td>
+                <td><input type="text" id="attentionArea"></td>
+            </tr>
+            <tr>
+                <td><strong>Comparison Notes:</strong></td>
+                <td><textarea id="comparisonNotes" placeholder="Brief notes on changes since previous period"></textarea></td>
+            </tr>
+        </table>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="generateVOCSummary()" class="button">Generate VOC Summary</button>
+        </div>
+        
+        <div id="results" class="results">
+            <h2>Voice of Customer Executive Summary</h2>
+            <div id="executiveSummary">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            <div id="sentimentSummary">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            <div id="trendsSummary">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            <div id="actionsSummary">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            <div id="comparisonSummary">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function generateVOCSummary() {
+            // Get executive summary information
+            const reportingPeriod = document.getElementById('reportingPeriod').value;
+            const preparedBy = document.getElementById('preparedBy').value;
+            const preparedDate = document.getElementById('preparedDate').value;
+            const summaryStatement = document.getElementById('summaryStatement').value;
+            
+            // Get sentiment data
+            const positivePercent = document.getElementById('positivePercent').value;
+            const neutralPercent = document.getElementById('neutralPercent').value;
+            const negativePercent = document.getElementById('negativePercent').value;
+            
+            // Validate input
+            if (!reportingPeriod || !preparedBy || !summaryStatement) {
+                alert('Please complete at least the Executive Summary section');
+                return;
+            }
+            
+            // Get trend data
+            const trendInputs = document.querySelectorAll('.trend-input');
+            const sentimentInputs = document.querySelectorAll('.sentiment-input');
+            const frequencyInputs = document.querySelectorAll('.frequency-input');
+            const impactInputs = document.querySelectorAll('.impact-input');
+            
+            let trendsSummary = '<h3>Key Feedback Trends</h3><ul>';
+            let criticalTrends = 0;
+            let highImpactTrends = 0;
+            
+            for (let i = 0; i < trendInputs.length; i++) {
+                const trend = trendInputs[i].value;
+                const sentiment = sentimentInputs[i].value;
+                const frequency = frequencyInputs[i].value;
+                const impact = impactInputs[i].value;
+                
+                if (trend && sentiment && frequency && impact) {
+                    trendsSummary += `<li><strong>${trend}</strong> - ${sentiment} sentiment, ${frequency} mentions, ${impact} business impact</li>`;
+                    
+                    if (impact === 'Critical') {
+                        criticalTrends++;
+                    } else if (impact === 'High') {
+                        highImpactTrends++;
+                    }
+                }
+            }
+            trendsSummary += '</ul>';
+            
+            // Get action data
+            const actionInputs = document.querySelectorAll('.action-input');
+            const ownerInputs = document.querySelectorAll('.owner-input');
+            const priorityInputs = document.querySelectorAll('.priority-input');
+            const targetDateInputs = document.querySelectorAll('.target-date');
+            
+            let actionsSummary = '<h3>Priority Action Items</h3><ul>';
+            let urgentActions = 0;
+            
+            for (let i = 0; i < actionInputs.length; i++) {
+                const action = actionInputs[i].value;
+                const owner = ownerInputs[i].value;
+                const priority = priorityInputs[i].value;
+                const targetDate = targetDateInputs[i].value;
+                
+                if (action && owner && priority) {
+                    actionsSummary += `<li><strong>${action}</strong> - Owned by ${owner}, ${priority} priority${targetDate ? ', Target: ' + targetDate : ''}</li>`;
+                    
+                    if (priority === 'Urgent') {
+                        urgentActions++;
+                    }
+                }
+            }
+            actionsSummary += '</ul>';
+            
+            // Get comparison data
+            const previousPeriod = document.getElementById('previousPeriod').value;
+            const sentimentTrend = document.getElementById('sentimentTrend').value;
+            const improvedArea = document.getElementById('improvedArea').value;
+            const attentionArea = document.getElementById('attentionArea').value;
+            const comparisonNotes = document.getElementById('comparisonNotes').value;
+            
+            // Build the summary sections
+            const resultsDiv = document.getElementById('results');
+            const executiveSummaryDiv = document.getElementById('executiveSummary');
+            const sentimentSummaryDiv = document.getElementById('sentimentSummary');
+            const trendsSummaryDiv = document.getElementById('trendsSummary');
+            const actionsSummaryDiv = document.getElementById('actionsSummary');
+            const comparisonSummaryDiv = document.getElementById('comparisonSummary');
+            
+            // Executive summary
+            let executiveSummaryHtml = `
+                <p><strong>Reporting Period:</strong> ${reportingPeriod}</p>
+                <p><strong>Prepared By:</strong> ${preparedBy}</p>
+                <p><strong>Date:</strong> ${preparedDate || new Date().toLocaleDateString()}</p>
+                <p><strong>Summary:</strong> ${summaryStatement}</p>
+            `;
+            executiveSummaryDiv.innerHTML = executiveSummaryHtml;
+            
+            // Sentiment summary
+            let sentimentSummaryHtml = '<h3>Customer Sentiment Overview</h3>';
+            if (positivePercent || neutralPercent || negativePercent) {
+                sentimentSummaryHtml += `<p>Positive: ${positivePercent || 0}% | Neutral: ${neutralPercent || 0}% | Negative: ${negativePercent || 0}%</p>`;
+            } else {
+                sentimentSummaryHtml += '<p>No sentiment data provided</p>';
+            }
+            sentimentSummaryDiv.innerHTML = sentimentSummaryHtml;
+            
+            // Trends summary
+            trendsSummaryDiv.innerHTML = trendsSummary;
+            
+            // Actions summary
+            actionsSummaryDiv.innerHTML = actionsSummary;
+            
+            // Comparison summary
+            let comparisonSummaryHtml = '<h3>Quarter-over-Quarter Comparison</h3>';
+            if (previousPeriod) {
+                comparisonSummaryHtml += `
+                    <p><strong>Previous Period:</strong> ${previousPeriod}</p>
+                    ${sentimentTrend ? `<p><strong>Overall Sentiment Trend:</strong> ${sentimentTrend}</p>` : ''}
+                    ${improvedArea ? `<p><strong>Most Improved Area:</strong> ${improvedArea}</p>` : ''}
+                    ${attentionArea ? `<p><strong>Area Needing Most Attention:</strong> ${attentionArea}</p>` : ''}
+                    ${comparisonNotes ? `<p><strong>Notes:</strong> ${comparisonNotes}</p>` : ''}
+                `;
+            } else {
+                comparisonSummaryHtml += '<p>No comparison data provided</p>';
+            }
+            comparisonSummaryDiv.innerHTML = comparisonSummaryHtml;
+            
+            // Display the results
+            resultsDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
