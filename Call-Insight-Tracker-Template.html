@@ -6,113 +6,172 @@
     <title>Call Insight Tracker Template</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
         h1 {
-            color: #333;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 200px;
+            height: auto;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
+            border-radius: 5px;
+            overflow: hidden;
         }
         table, th, td {
-            border: 1px solid #ddd;
+            border: 1px solid #e0e0e0;
         }
         th, td {
-            padding: 10px;
+            padding: 12px 15px;
             text-align: left;
         }
         th {
-            background-color: #f4f4f4;
+            background-color: #3498db;
+            color: white;
+            font-weight: 500;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
         }
         .instructions {
-            background-color: #f9f9f9;
-            padding: 10px;
-            border: 1px solid #ddd;
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-left: 4px solid #3498db;
             margin-bottom: 20px;
+            border-radius: 4px;
         }
         .button {
             display: inline-block;
-            padding: 10px 15px;
+            padding: 10px 20px;
             font-size: 16px;
             color: #fff;
-            background-color: #007BFF;
+            background-color: #3498db;
             border: none;
             border-radius: 5px;
             text-decoration: none;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
         .button:hover {
-            background-color: #0056b3;
+            background-color: #2980b9;
         }
         .results {
             margin-top: 20px;
-            padding: 15px;
-            background-color: #f0f8ff;
-            border: 1px solid #b0c4de;
+            padding: 20px;
+            background-color: #edf7ff;
+            border: 1px solid #d4e6f1;
+            border-radius: 5px;
             display: none;
         }
         .score-total {
             font-weight: bold;
             font-size: 18px;
-            margin-top: 10px;
+            margin-top: 15px;
+            color: #2c3e50;
+        }
+        input[type="number"] {
+            width: 60px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .category-score {
+            margin-bottom: 8px;
         }
     </style>
 </head>
 <body>
-    <h1>Call Insight Tracker Template</h1>
-    <div class="instructions">
-        <p><strong>Instructions:</strong> Use this template to track insights from your customer calls. Fill in the details below and score your current process to identify gaps and opportunities for improvement.</p>
-        <p>Scoring guide: 1 = Never capture this, 5 = Consistently capture and act on this</p>
-    </div>
-    
-    <table id="insightTable">
-        <thead>
-            <tr>
-                <th>Category</th>
-                <th>Description</th>
-                <th>Score (1-5)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Churn Risk Indicators</td>
-                <td>Identify early signs of churn during customer calls.</td>
-                <td><input type="number" min="1" max="5" placeholder="Score" class="score-input"></td>
-            </tr>
-            <tr>
-                <td>Product Feedback</td>
-                <td>Capture valuable feedback about your product or service.</td>
-                <td><input type="number" min="1" max="5" placeholder="Score" class="score-input"></td>
-            </tr>
-            <tr>
-                <td>Success Stories</td>
-                <td>Document customer success stories and testimonials.</td>
-                <td><input type="number" min="1" max="5" placeholder="Score" class="score-input"></td>
-            </tr>
-            <tr>
-                <td>Expansion Opportunities</td>
-                <td>Spot opportunities for upselling or cross-selling.</td>
-                <td><input type="number" min="1" max="5" placeholder="Score" class="score-input"></td>
-            </tr>
-            <tr>
-                <td>Technical Obstacles</td>
-                <td>Note any technical challenges or issues raised by customers.</td>
-                <td><input type="number" min="1" max="5" placeholder="Score" class="score-input"></td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <button onclick="calculateScores()" class="button">Calculate Results</button>
-    
-    <div id="results" class="results">
-        <h2>Your Call Insight Assessment Results</h2>
-        <div id="scoreDetails"></div>
-        <div id="totalScore" class="score-total"></div>
-        <div id="recommendation" style="margin-top: 15px;"></div>
+    <div class="container">
+        <h1>Call Insight Tracker Template</h1>
+        <div class="logo">
+            <!-- Replace with your actual logo URL -->
+            <img src="../calculators/thecscafe.png" alt="The CS Cafe Logo">
+        </div>
+        
+        <div class="instructions">
+            <p><strong>Instructions:</strong> Use this template to track insights from your customer calls. Fill in the details below and score your current process to identify gaps and opportunities for improvement.</p>
+            <p><strong>Scoring guide:</strong> 1 = Never capture this, 5 = Consistently capture and act on this</p>
+        </div>
+        
+        <table id="insightTable">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Score (1-5)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Churn Risk Indicators</td>
+                    <td>Identify early signs of churn during customer calls.</td>
+                    <td><input type="number" min="1" max="5" placeholder="Score" class="score-input"></td>
+                </tr>
+                <tr>
+                    <td>Product Feedback</td>
+                    <td>Capture valuable feedback about your product or service.</td>
+                    <td><input type="number" min="1" max="5" placeholder="Score" class="score-input"></td>
+                </tr>
+                <tr>
+                    <td>Success Stories</td>
+                    <td>Document customer success stories and testimonials.</td>
+                    <td><input type="number" min="1" max="5" placeholder="Score" class="score-input"></td>
+                </tr>
+                <tr>
+                    <td>Expansion Opportunities</td>
+                    <td>Spot opportunities for upselling or cross-selling.</td>
+                    <td><input type="number" min="1" max="5" placeholder="Score" class="score-input"></td>
+                </tr>
+                <tr>
+                    <td>Technical Obstacles</td>
+                    <td>Note any technical challenges or issues raised by customers.</td>
+                    <td><input type="number" min="1" max="5" placeholder="Score" class="score-input"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div style="text-align: center;">
+            <button onclick="calculateScores()" class="button">Calculate Results</button>
+        </div>
+        
+        <div id="results" class="results">
+            <h2>Your Call Insight Assessment Results</h2>
+            <div id="scoreDetails">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            <div id="totalScore" class="score-total">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            <div id="recommendation" style="margin-top: 15px;">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
     </div>
     
     <script>
@@ -129,7 +188,7 @@
                     validInputs++;
                     
                     const category = input.closest('tr').cells[0].textContent;
-                    scoreDetails += `<p><strong>${category}:</strong> ${score}/5</p>`;
+                    scoreDetails += `<div class="category-score"><strong>${category}:</strong> ${score}/5</div>`;
                 }
             });
             
