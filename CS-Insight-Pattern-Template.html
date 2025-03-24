@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Insight Pattern Template</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .instructions {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        table, th, td {
+            border: 1px solid #e0e0e0;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 500;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #edf7ff;
+            border: 1px solid #d4e6f1;
+            border-radius: 5px;
+            display: none;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .owner-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+        .summary {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CS Insight Pattern Template</h1>
+        
+        <div class="instructions">
+            <p><strong>Instructions:</strong> Use this template during your weekly 20-minute pattern recognition meetings to track common themes emerging from customer calls and identify actionable insights.</p>
+            <p><strong>Meeting frequency:</strong> Weekly (20 minutes)</p>
+        </div>
+        
+        <table id="patternTable">
+            <thead>
+                <tr>
+                    <th>Pattern/Theme</th>
+                    <th>Frequency</th>
+                    <th>Impact Level</th>
+                    <th>Action Required</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" placeholder="e.g., Feature confusion" class="pattern-input"></td>
+                    <td>
+                        <select class="frequency-input">
+                            <option value="">Select</option>
+                            <option value="Rare">Rare (1-2 mentions)</option>
+                            <option value="Occasional">Occasional (3-5 mentions)</option>
+                            <option value="Common">Common (6-10 mentions)</option>
+                            <option value="Frequent">Frequent (10+ mentions)</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="impact-input">
+                            <option value="">Select</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Critical">Critical</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="action-input">
+                            <option value="">Select</option>
+                            <option value="Monitor">Monitor</option>
+                            <option value="Escalate">Escalate to Product</option>
+                            <option value="Documentation">Improve Documentation</option>
+                            <option value="Training">Enhance Training</option>
+                            <option value="Immediate">Immediate Response Needed</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="e.g., Onboarding friction" class="pattern-input"></td>
+                    <td>
+                        <select class="frequency-input">
+                            <option value="">Select</option>
+                            <option value="Rare">Rare (1-2 mentions)</option>
+                            <option value="Occasional">Occasional (3-5 mentions)</option>
+                            <option value="Common">Common (6-10 mentions)</option>
+                            <option value="Frequent">Frequent (10+ mentions)</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="impact-input">
+                            <option value="">Select</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Critical">Critical</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="action-input">
+                            <option value="">Select</option>
+                            <option value="Monitor">Monitor</option>
+                            <option value="Escalate">Escalate to Product</option>
+                            <option value="Documentation">Improve Documentation</option>
+                            <option value="Training">Enhance Training</option>
+                            <option value="Immediate">Immediate Response Needed</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="e.g., Integration issues" class="pattern-input"></td>
+                    <td>
+                        <select class="frequency-input">
+                            <option value="">Select</option>
+                            <option value="Rare">Rare (1-2 mentions)</option>
+                            <option value="Occasional">Occasional (3-5 mentions)</option>
+                            <option value="Common">Common (6-10 mentions)</option>
+                            <option value="Frequent">Frequent (10+ mentions)</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="impact-input">
+                            <option value="">Select</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Critical">Critical</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="action-input">
+                            <option value="">Select</option>
+                            <option value="Monitor">Monitor</option>
+                            <option value="Escalate">Escalate to Product</option>
+                            <option value="Documentation">Improve Documentation</option>
+                            <option value="Training">Enhance Training</option>
+                            <option value="Immediate">Immediate Response Needed</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="Add another pattern..." class="pattern-input"></td>
+                    <td>
+                        <select class="frequency-input">
+                            <option value="">Select</option>
+                            <option value="Rare">Rare (1-2 mentions)</option>
+                            <option value="Occasional">Occasional (3-5 mentions)</option>
+                            <option value="Common">Common (6-10 mentions)</option>
+                            <option value="Frequent">Frequent (10+ mentions)</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="impact-input">
+                            <option value="">Select</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Critical">Critical</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="action-input">
+                            <option value="">Select</option>
+                            <option value="Monitor">Monitor</option>
+                            <option value="Escalate">Escalate to Product</option>
+                            <option value="Documentation">Improve Documentation</option>
+                            <option value="Training">Enhance Training</option>
+                            <option value="Immediate">Immediate Response Needed</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="owner-section">
+            <h3>Insight Owner Assignment</h3>
+            <p>Designate a team member responsible for consolidating these findings and driving action items.</p>
+            <table>
+                <tr>
+                    <td><strong>Insight Owner:</strong></td>
+                    <td><input type="text" id="insightOwner" placeholder="Enter name"></td>
+                </tr>
+                <tr>
+                    <td><strong>Next Review Date:</strong></td>
+                    <td><input type="date" id="reviewDate"></td>
+                </tr>
+            </table>
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="generateSummary()" class="button">Generate Summary</button>
+        </div>
+        
+        <div id="results" class="results">
+            <h2>Pattern Analysis Summary</h2>
+            <div id="patternSummary">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            <div id="actionSummary" class="summary">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            <div id="ownerSummary" style="margin-top: 15px;">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function generateSummary() {
+            const patternInputs = document.querySelectorAll('.pattern-input');
+            const frequencyInputs = document.querySelectorAll('.frequency-input');
+            const impactInputs = document.querySelectorAll('.impact-input');
+            const actionInputs = document.querySelectorAll('.action-input');
+            
+            let patternSummary = '';
+            let highPriorityCount = 0;
+            let mediumPriorityCount = 0;
+            let lowPriorityCount = 0;
+            
+            for (let i = 0; i < patternInputs.length; i++) {
+                const pattern = patternInputs[i].value;
+                const frequency = frequencyInputs[i].value;
+                const impact = impactInputs[i].value;
+                const action = actionInputs[i].value;
+                
+                if (pattern && frequency && impact && action) {
+                    patternSummary += `<p><strong>${pattern}</strong> - ${frequency}, ${impact} Impact, Action: ${action}</p>`;
+                    
+                    // Count by priority (impact)
+                    if (impact === 'Critical' || impact === 'High') {
+                        highPriorityCount++;
+                    } else if (impact === 'Medium') {
+                        mediumPriorityCount++;
+                    } else if (impact === 'Low') {
+                        lowPriorityCount++;
+                    }
+                }
+            }
+            
+            const insightOwner = document.getElementById('insightOwner').value;
+            const reviewDate = document.getElementById('reviewDate').value;
+            
+            const resultsDiv = document.getElementById('results');
+            const patternSummaryDiv = document.getElementById('patternSummary');
+            const actionSummaryDiv = document.getElementById('actionSummary');
+            const ownerSummaryDiv = document.getElementById('ownerSummary');
+            
+            if (patternSummary === '') {
+                alert('Please enter at least one complete pattern with all fields filled out.');
+                return;
+            }
+            
+            patternSummaryDiv.innerHTML = patternSummary;
+            
+            // Generate action summary
+            let actionSummary = `<p>Priority Summary: ${highPriorityCount} High/Critical, ${mediumPriorityCount} Medium, ${lowPriorityCount} Low</p>`;
+            
+            if (highPriorityCount > 0) {
+                actionSummary += `<p><strong>Recommendation:</strong> Immediate attention required for ${highPriorityCount} high priority items.</p>`;
+            } else if (mediumPriorityCount > 0) {
+                actionSummary += `<p><strong>Recommendation:</strong> Address medium priority items in the next sprint.</p>`;
+            } else {
+                actionSummary += `<p><strong>Recommendation:</strong> Continue monitoring and gather more data.</p>`;
+            }
+            
+            actionSummaryDiv.innerHTML = actionSummary;
+            
+            // Generate owner summary
+            let ownerSummary = '';
+            if (insightOwner) {
+                ownerSummary += `<p><strong>Insight Owner:</strong> ${insightOwner}</p>`;
+            }
+            if (reviewDate) {
+                ownerSummary += `<p><strong>Next Review Date:</strong> ${reviewDate}</p>`;
+            }
+            
+            ownerSummaryDiv.innerHTML = ownerSummary;
+            resultsDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
