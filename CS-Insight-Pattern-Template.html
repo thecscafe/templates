@@ -106,6 +106,7 @@
             margin-top: 15px;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <div class="container">
@@ -276,6 +277,10 @@
             <button onclick="generateSummary()" class="button">Generate Summary</button>
         </div>
         
+        <div style="text-align: center; margin-top: 10px; display: none;" id="exportPdfButton">
+            <button onclick="exportResultsAsPDF()" class="button">Export Results as PDF</button>
+        </div>
+        
         <div id="results" class="results">
             <h2>Pattern Analysis Summary</h2>
             <div id="patternSummary">
@@ -361,6 +366,26 @@
             
             ownerSummaryDiv.innerHTML = ownerSummary;
             resultsDiv.style.display = 'block';
+            
+            // Show the export button
+            document.getElementById('exportPdfButton').style.display = 'block';
+        }
+        
+        function exportResultsAsPDF() {
+            // Get the results element
+            const resultsElement = document.getElementById('results');
+            
+            // Configure pdf options
+            const options = {
+                margin: [10, 10, 10, 10],
+                filename: 'cs-insight-pattern.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            
+            // Generate and download the PDF
+            html2pdf().from(resultsElement).set(options).save();
         }
     </script>
 </body>
