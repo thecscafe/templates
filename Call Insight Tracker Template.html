@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Insight Tracker Template</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .instructions {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f8ff;
+            border: 1px solid #b0c4de;
+            display: none;
+        }
+        .score-total {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Call Insight Tracker Template</h1>
+    <div class="instructions">
+        <p><strong>Instructions:</strong> Use this template to track insights from your customer calls. Fill in the details below and score your current process to identify gaps and opportunities for improvement.</p>
+        <p>Scoring guide: 1 = Never capture this, 5 = Consistently capture and act on this</p>
+    </div>
+    
+    <table id="insightTable">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Score (1-5)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Churn Risk Indicators</td>
+                <td>Identify early signs of churn during customer calls.</td>
+                <td><input type="number" min="1" max="5" placeholder="Score" class="score-input"></td>
+            </tr>
+            <tr>
+                <td>Product Feedback</td>
+                <td>Capture valuable feedback about your product or service.</td>
+                <td><input type="number" min="1" max="5" placeholder="Score" class="score-input"></td>
+            </tr>
+            <tr>
+                <td>Success Stories</td>
+                <td>Document customer success stories and testimonials.</td>
+                <td><input type="number" min="1" max="5" placeholder="Score" class="score-input"></td>
+            </tr>
+            <tr>
+                <td>Expansion Opportunities</td>
+                <td>Spot opportunities for upselling or cross-selling.</td>
+                <td><input type="number" min="1" max="5" placeholder="Score" class="score-input"></td>
+            </tr>
+            <tr>
+                <td>Technical Obstacles</td>
+                <td>Note any technical challenges or issues raised by customers.</td>
+                <td><input type="number" min="1" max="5" placeholder="Score" class="score-input"></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <button onclick="calculateScores()" class="button">Calculate Results</button>
+    
+    <div id="results" class="results">
+        <h2>Your Call Insight Assessment Results</h2>
+        <div id="scoreDetails"></div>
+        <div id="totalScore" class="score-total"></div>
+        <div id="recommendation" style="margin-top: 15px;"></div>
+    </div>
+    
+    <script>
+        function calculateScores() {
+            const inputs = document.querySelectorAll('.score-input');
+            let totalScore = 0;
+            let validInputs = 0;
+            let scoreDetails = '';
+            
+            inputs.forEach((input, index) => {
+                if (input.value !== '') {
+                    const score = parseInt(input.value);
+                    totalScore += score;
+                    validInputs++;
+                    
+                    const category = input.closest('tr').cells[0].textContent;
+                    scoreDetails += `<p><strong>${category}:</strong> ${score}/5</p>`;
+                }
+            });
+            
+            const resultsDiv = document.getElementById('results');
+            const scoreDetailsDiv = document.getElementById('scoreDetails');
+            const totalScoreDiv = document.getElementById('totalScore');
+            const recommendationDiv = document.getElementById('recommendation');
+            
+            if (validInputs === 0) {
+                alert('Please enter at least one score to calculate results.');
+                return;
+            }
+            
+            const averageScore = totalScore / validInputs;
+            scoreDetailsDiv.innerHTML = scoreDetails;
+            totalScoreDiv.innerHTML = `<p>Overall Score: ${averageScore.toFixed(1)} out of 5</p>`;
+            
+            // Add recommendations based on score
+            let recommendation = '';
+            if (averageScore < 2) {
+                recommendation = '<p>Your team has significant opportunities to improve call insight extraction. Start by implementing a basic call framework and documenting key points consistently.</p>';
+            } else if (averageScore < 3.5) {
+                recommendation = '<p>Your team has a foundation for call insight extraction but could benefit from more systematic approaches. Consider technology solutions to scale your efforts.</p>';
+            } else {
+                recommendation = '<p>Your team has strong call insight extraction practices. Focus on cross-functional sharing and pattern recognition to maximize value.</p>';
+            }
+            
+            recommendationDiv.innerHTML = recommendation;
+            resultsDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
