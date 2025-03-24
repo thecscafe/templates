@@ -105,6 +105,7 @@
             margin-bottom: 8px;
         }
     </style>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -218,6 +219,24 @@
             
             recommendationDiv.innerHTML = recommendation;
             resultsDiv.style.display = 'block';
+             // Show the export button
+            document.getElementById('exportPdfButton').style.display = 'block';
+        }
+         function exportResultsAsPDF() {
+            // Get the results element
+            const resultsElement = document.getElementById('results');
+            
+            // Configure pdf options
+            const options = {
+                margin: [10, 10, 10, 10],
+                filename: 'cs-insight-pattern.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            
+            // Generate and download the PDF
+            html2pdf().from(resultsElement).set(options).save();
         }
     </script>
 </body>
