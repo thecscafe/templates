@@ -160,7 +160,10 @@
         <div style="text-align: center;">
             <button onclick="calculateScores()" class="button">Calculate Results</button>
         </div>
-        
+        <!-- Add this export button -->
+<div style="text-align: center; margin-top: 10px; display: none;" id="exportPdfButton">
+    <button onclick="exportResultsAsPDF()" class="button">Export Results as PDF</button>
+</div>
         <div id="results" class="results">
             <h2>Your Call Insight Assessment Results</h2>
             <div id="scoreDetails">
