@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitive Insight Outreach Template</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 200px;
+            height: auto;
+        }
+        .instructions {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #edf7ff;
+            border: 1px solid #d4e6f1;
+            border-radius: 5px;
+            display: none;
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-family: inherit;
+            font-size: 16px;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .form-section {
+            background-color: #f8f8f8;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .form-hint {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 3px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .section-title h3 {
+            margin: 0;
+            color: #2c3e50;
+        }
+        .section-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .ethics-block {
+            background-color: #f8f8f8;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .ethics-title {
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+        .ethics-content ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .ethics-content li {
+            margin-bottom: 5px;
+        }
+        .mapping-entry {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .remove-mapping {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            color: #777;
+        }
+        .remove-mapping:hover {
+            background-color: #e0e0e0;
+        }
+        .mapping-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .add-mapping-btn {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+        }
+        .add-mapping-btn:hover {
+            background-color: #e0e0e0;
+        }
+        .add-mapping-btn i {
+            margin-right: 5px;
+            font-weight: bold;
+        }
+        .checkbox-group {
+            margin-bottom: 15px;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .checkbox-item input {
+            margin-right: 10px;
+            margin-top: 4px;
+        }
+        .checkbox-label {
+            flex: 1;
+        }
+        .template-card {
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #f8fbff;
+            border-radius: 0 5px 5px 0;
+        }
+        .template-title {
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .template-message {
+            white-space: pre-line;
+            line-height: 1.6;
+        }
+        .copy-button {
+            padding: 5px 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+        .copy-button:hover {
+            background-color: #e0e0e0;
+        }
+        .copied-message {
+            color: green;
+            font-size: 14px;
+            display: none;
+            margin-left: 10px;
+        }
+        .template-tag {
+            display: inline-block;
+            background-color: #e0f7fa;
+            color: #00838f;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            margin-right: 5px;
+        }
+        .warning-highlight {
+            background-color: #fff3e0;
+            padding: 2px;
+        }
+        .ethical-tips {
+            background-color: #f1f8e9;
+            border: 1px solid #c5e1a5;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .ethical-tips h4 {
+            color: #558b2f;
+            margin-top: 0;
+        }
+        .ethical-tips ul {
+            margin-bottom: 0;
+        }
+        @media (max-width: 768px) {
+            .mapping-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Competitive Insight Outreach Template</h1>
+        <div class="logo">
+            <!-- Replace with your actual logo URL -->
+            <img src="../assets/thecscafe.png" alt="The CS Cafe Logo">
+        </div>
+        
+        <div class="instructions">
+            <p><strong>The Competitive Insight Outreach Template</strong> helps you craft messages to competitors of your former customers without crossing ethical lines. This approach has helped 43% of CS professionals secure interviews at companies competing with their former customers.</p>
+            <p>Map your customer relationships to their competitors, select appropriate knowledge to share, and generate ethical outreach templates that position your unique market insights as valuable.</p>
+        </div>
+        
+        <!-- Customer to Competitor Mapping Section -->
+        <div class="form-section">
+            <div class="section-title">
+                <div class="section-number">1</div>
+                <h3>Customer to Competitor Mapping</h3>
+            </div>
+            
+            <div id="mappingContainer">
+                <!-- Mapping entries will be added here -->
+            </div>
+            
+            <button class="add-mapping-btn" onclick="addMappingEntry()">
+                <i>+</i> Add Customer-Competitor Pair
+            </button>
+        </div>
+        
+        <!-- Ethical Guidelines Section -->
+        <div class="form-section">
+            <div class="section-title">
+                <div class="section-number">2</div>
+                <h3>Ethical Knowledge Selection</h3>
+            </div>
+            
+            <div class="ethics-block">
+                <div class="ethics-title">Ethical Guidelines for Competitive Outreach</div>
+                <div class="ethics-content">
+                    <ul>
+                        <li><strong>Never share</strong> proprietary information, confidential data, or trade secrets from previous customers</li>
+                        <li><strong>Never disclose</strong> specific pricing, contract terms, or customer names without permission</li>
+                        <li><strong>Focus on</strong> your skills, market knowledge, and general problem-solving approaches</li>
+                        <li><strong>Emphasize</strong> your understanding of industry needs without revealing specific customer strategies</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Select the types of knowledge you can ethically share:</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="knowledge_challenges" checked>
+                        <div class="checkbox-label">
+                            <label for="knowledge_challenges">General industry challenges and pain points</label>
+                            <div class="form-hint">Common problems faced by companies in this space, without customer specifics</div>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="knowledge_approaches" checked>
+                        <div class="checkbox-label">
+                            <label for="knowledge_approaches">Your problem-solving approaches</label>
+                            <div class="form-hint">Methods you personally used to solve problems (not company-specific processes)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="knowledge_trends" checked>
+                        <div class="checkbox-label">
+                            <label for="knowledge_trends">Market trends and industry direction</label>
+                            <div class="form-hint">General industry patterns and evolution you've observed</div>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="knowledge_skills" checked>
+                        <div class="checkbox-label">
+                            <label for="knowledge_skills">Your technical/domain skills</label>
+                            <div class="form-hint">Specific expertise you've developed that applies across companies</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="specific_expertise">Your Specific Expertise (Industry/Technical):</label>
+                <input type="text" id="specific_expertise" placeholder="e.g., Enterprise SaaS onboarding, financial services compliance, healthcare retention strategies">
+            </div>
+            
+            <div class="form-group">
+                <label for="unique_insight">One Unique Market Insight You Can Share (Without Breaking Confidentiality):</label>
+                <textarea id="unique_insight" placeholder="e.g., I've observed that companies implementing a multi-touch onboarding approach tend to see 30% higher adoption metrics than those using a single point of contact."></textarea>
+                <div class="form-hint">This should be an insight based on your experience that would be valuable to competitors</div>
+            </div>
+        </div>
+        
+        <!-- Outreach Context Section -->
+        <div class="form-section">
+            <div class="section-title">
+                <div class="section-number">3</div>
+                <h3>Outreach Context</h3>
+            </div>
+            
+            <div class="form-group">
+                <label for="target_role">Target Role You're Pursuing:</label>
+                <input type="text" id="target_role" placeholder="e.g., Senior Customer Success Manager, Director of Customer Experience">
+            </div>
+            
+            <div class="form-group">
+                <label for="outreach_platform">Outreach Platform:</label>
+                <select id="outreach_platform">
+                    <option value="email">Email</option>
+                    <option value="linkedin">LinkedIn Message</option>
+                    <option value="network_intro">Intro Through Network</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="recipient_role">Recipient's Role:</label>
+                <select id="recipient_role">
+                    <option value="hiring_manager">Hiring Manager</option>
+                    <option value="recruiter">Recruiter</option>
+                    <option value="cs_leader">CS Leader (Not Direct Hiring Manager)</option>
+                    <option value="existing_contact">Existing Contact at Company</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="your_name">Your Name:</label>
+                <input type="text" id="your_name" placeholder="Your full name">
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 20px 0;">
+            <button onclick="generateTemplates()" class="button">Generate Competitive Insight Templates</button>
+        </div>
+        
+        <div id="results" class="results">
+            <h2>Your Competitive Insight Outreach Templates</h2>
+            <p>Use these ethically crafted templates to leverage your competitive insights:</p>
+            
+            <div id="templatesContainer">
+                <!-- Templates will be added here -->
+            </div>
+            
+            <div class="ethical-tips">
+                <h4>Ethical Communication Tips</h4>
+                <ul>
+                    <li>If asked specific questions about former customers, politely redirect to your general expertise</li>
+                    <li>Frame insights as industry observations rather than specific company information</li>
+                    <li>Focus on how your skills can solve their challenges rather than how competitors are failing</li>
+                    <li>Prepare for interviews by identifying clear boundaries of what you can and cannot discuss</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button onclick="exportResultsAsPDF()" class="button">Export Templates as PDF</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Counter for mapping entries
+        let mappingCounter = 0;
+        
+        // Add a customer-competitor mapping entry
+        function addMappingEntry() {
+            mappingCounter++;
+            
+            const mappingContainer = document.getElementById('mappingContainer');
+            const mappingEntry = document.createElement('div');
+            mappingEntry.className = 'mapping-entry';
+            mappingEntry.id = `mapping-${mappingCounter}`;
+            
+            mappingEntry.innerHTML = `
+                <button class="remove-mapping" onclick="removeMappingEntry(${mappingCounter})">×</button>
+                <div class="mapping-grid">
+                    <div>
+                        <label for="former_customer_${mappingCounter}">Former Customer:</label>
+                        <input type="text" id="former_customer_${mappingCounter}" placeholder="e.g., Acme Financial">
+                        <div class="form-hint">Company where you gained experience</div>
+                    </div>
+                    <div>
+                        <label for="competitor_${mappingCounter}">Target Competitor:</label>
+                        <input type="text" id="competitor_${mappingCounter}" placeholder="e.g., Beta Investments">
+                        <div class="form-hint">Competitor you're targeting for outreach</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="industry_segment_${mappingCounter}">Industry/Segment:</label>
+                    <input type="text" id="industry_segment_${mappingCounter}" placeholder="e.g., Enterprise SaaS, Fintech, Healthcare">
+                </div>
+                <div class="form-group">
+                    <label for="challenges_${mappingCounter}">Common Challenges in This Market:</label>
+                    <textarea id="challenges_${mappingCounter}" placeholder="List 2-3 common challenges companies in this industry face (that both companies would experience)"></textarea>
+                    <div class="form-hint">Focus on industry-wide challenges, not customer-specific problems</div>
+                </div>
+            `;
+            
+            mappingContainer.appendChild(mappingEntry);
+        }
+        
+        // Remove a mapping entry
+        function removeMappingEntry(id) {
+            const mappingEntry = document.getElementById(`mapping-${id}`);
+            mappingEntry.parentNode.removeChild(mappingEntry);
+        }
+        
+        // Copy text to clipboard
+        function copyToClipboard(text, buttonElement) {
+            navigator.clipboard.writeText(text).then(function() {
+                // Show "Copied!" message
+                const message = buttonElement.nextElementSibling;
+                message.style.display = 'inline';
+                
+                // Hide after 2 seconds
+                setTimeout(() => {
+                    message.style.display = 'none';
+                }, 2000);
+            });
+        }
+        
+        // Generate templates
+        function generateTemplates() {
+            // Validate inputs
+            const mappingEntries = document.querySelectorAll('.mapping-entry');
+            if (mappingEntries.length === 0) {
+                alert('Please add at least one customer-competitor mapping.');
+                return;
+            }
+            
+            const targetRole = document.getElementById('target_role').value.trim();
+            const specificExpertise = document.getElementById('specific_expertise').value.trim();
+            const uniqueInsight = document.getElementById('unique_insight').value.trim();
+            const yourName = document.getElementById('your_name').value.trim();
+            
+            if (!targetRole || !specificExpertise || !uniqueInsight || !yourName) {
+                alert('Please complete all required fields.');
+                return;
+            }
+            
+            // Check if at least one knowledge type is selected
+            const knowledgeTypes = [
+                'knowledge_challenges',
+                'knowledge_approaches',
+                'knowledge_trends',
+                'knowledge_skills'
+            ];
+            
+            const hasSelectedKnowledge = knowledgeTypes.some(type => document.getElementById(type).checked);
+            if (!hasSelectedKnowledge) {
+                alert('Please select at least one type of knowledge you can ethically share.');
+                return;
+            }
+            
+            // Collect mapping data
+            const mappings = [];
+            mappingEntries.forEach(entry => {
+                const id = entry.id.split('-')[1];
+                const formerCustomer = document.getElementById(`former_customer_${id}`).value.trim();
+                const competitor = document.getElementById(`competitor_${id}`).value.trim();
+                const industrySegment = document.getElementById(`industry_segment_${id}`).value.trim();
+                const challenges = document.getElementById(`challenges_${id}`).value.trim();
+                
+                if (formerCustomer && competitor && industrySegment && challenges) {
+                    mappings.push({
+                        formerCustomer,
+                        competitor,
+                        industrySegment,
+                        challenges
+                    });
+                }
+            });
+            
+            if (mappings.length === 0) {
+                alert('Please complete at least one customer-competitor mapping.');
+                return;
+            }
+            
+            // Get selected knowledge types
+            const selectedKnowledge = knowledgeTypes.filter(type => document.getElementById(type).checked);
+            
+            // Get outreach context
+            const outreachPlatform = document.getElementById('outreach_platform').value;
+            const recipientRole = document.getElementById('recipient_role').value;
+            
+            // Generate templates for each mapping
+            const templatesContainer = document.getElementById('templatesContainer');
+            templatesContainer.innerHTML = '';
+            
+            mappings.forEach((mapping, index) => {
+                const emailTemplate = generateEmailTemplate(
+                    mapping,
+                    targetRole,
+                    specificExpertise,
+                    uniqueInsight,
+                    selectedKnowledge,
+                    recipientRole,
+                    yourName
+                );
+                
+                const linkedinTemplate = generateLinkedInTemplate(
+                    mapping,
+                    targetRole,
+                    specificExpertise,
+                    uniqueInsight,
+                    selectedKnowledge,
+                    yourName
+                );
+                
+                // Create template cards
+                const mappingTitle = document.createElement('h3');
+                mappingTitle.textContent = `Templates for ${mapping.competitor}`;
+                mappingTitle.style.marginTop = index > 0 ? '30px' : '0';
+                templatesContainer.appendChild(mappingTitle);
+                
+                // Email template card
+                const emailCard = document.createElement('div');
+                emailCard.className = 'template-card';
+                emailCard.innerHTML = `
+                    <div class="template-title">
+                        <span>Email Template <span class="template-tag">Primary</span></span>
+                        <button class="copy-button" onclick="copyToClipboard('${emailTemplate.replace(/'/g, "\\'")}', this)">Copy to Clipboard</button>
+                        <span class="copied-message">Copied!</span>
+                    </div>
+                    <div class="template-message">${emailTemplate}</div>
+                `;
+                templatesContainer.appendChild(emailCard);
+                
+                // LinkedIn template card
+                const linkedinCard = document.createElement('div');
+                linkedinCard.className = 'template-card';
+                linkedinCard.innerHTML = `
+                    <div class="template-title">
+                        <span>LinkedIn Message <span class="template-tag">Condensed</span></span>
+                        <button class="copy-button" onclick="copyToClipboard('${linkedinTemplate.replace(/'/g, "\\'")}', this)">Copy to Clipboard</button>
+                        <span class="copied-message">Copied!</span>
+                    </div>
+                    <div class="template-message">${linkedinTemplate}</div>
+                `;
+                templatesContainer.appendChild(linkedinCard);
+                
+                // Add follow-up template if needed
+                if (outreachPlatform === 'email' || outreachPlatform === 'linkedin') {
+                    const followUpTemplate = generateFollowUpTemplate(
+                        mapping,
+                        targetRole,
+                        outreachPlatform,
+                        yourName
+                    );
+                    
+                    const followUpCard = document.createElement('div');
+                    followUpCard.className = 'template-card';
+                    followUpCard.innerHTML = `
+                        <div class="template-title">
+                            <span>Follow-Up Template <span class="template-tag">1 Week Later</span></span>
+                            <button class="copy-button" onclick="copyToClipboard('${followUpTemplate.replace(/'/g, "\\'")}', this)">Copy to Clipboard</button>
+                            <span class="copied-message">Copied!</span>
+                        </div>
+                        <div class="template-message">${followUpTemplate}</div>
+                    `;
+                    templatesContainer.appendChild(followUpCard);
+                }
+            });
+            
+            // Show results
+            document.getElementById('results').style.display = 'block';
+        }
+        
+        // Generate email template
+        function generateEmailTemplate(
+            mapping,
+            targetRole,
+            specificExpertise,
+            uniqueInsight,
+            selectedKnowledge,
+            recipientRole,
+            yourName
+        ) {
+            // Create subject line
+            let subjectLine = '';
+            if (recipientRole === 'hiring_manager' || recipientRole === 'cs_leader') {
+                subjectLine = `${targetRole} opportunity - industry insights from ${mapping.industrySegment} market`;
+            } else if (recipientRole === 'recruiter') {
+                subjectLine = `${targetRole} candidate with ${mapping.industrySegment} expertise`;
+            } else {
+                subjectLine = `Connecting about ${mapping.competitor} and ${mapping.industrySegment} market trends`;
+            }
+            
+            // Create greeting
+            let greeting = 'Hello [Recipient Name],';
+            
+            // Create introduction paragraph
+            let introduction = '';
+            if (recipientRole === 'existing_contact') {
+                introduction = `I hope this message finds you well. I'm reaching out because I'm exploring new opportunities in the ${mapping.industrySegment} space, and I'm particularly interested in ${mapping.competitor} given your innovative approach to [specific aspect of their business].`;
+            } else {
+                introduction = `I'm reaching out regarding the ${targetRole} opportunity at ${mapping.competitor}. With my background in ${specificExpertise} within the ${mapping.industrySegment} market, I believe I can bring valuable insights to your team.`;
+            }
+            
+            // Create market insight paragraph
+            let marketInsight = `During my time working in this industry, I've developed a strong understanding of the key challenges companies face, including ${mapping.challenges}. `;
+            
+            if (selectedKnowledge.includes('knowledge_trends')) {
+                marketInsight += `I've observed that ${uniqueInsight} `;
+            }
+            
+            // Create value proposition
+            let valueProposition = `What I can bring to ${mapping.competitor} is a unique perspective on:`;
+            
+            let valuePoints = [];
+            
+            if (selectedKnowledge.includes('knowledge_challenges')) {
+                valuePoints.push(`How customers in this space evaluate and select solutions, and what drives their decision-making process`);
+            }
+            
+            if (selectedKnowledge.includes('knowledge_approaches')) {
+                valuePoints.push(`Effective approaches for addressing common pain points like ${mapping.challenges.split(',')[0]}`);
+            }
+            
+            if (selectedKnowledge.includes('knowledge_trends')) {
+                valuePoints.push(`Emerging trends that are reshaping customer expectations in ${mapping.industrySegment}`);
+            }
+            
+            if (selectedKnowledge.includes('knowledge_skills')) {
+                valuePoints.push(`Technical expertise in ${specificExpertise} that can help strengthen your customer relationships`);
+            }
+            
+            // Create value points list
+            let valuePointsList = '';
+            valuePoints.forEach(point => {
+                valuePointsList += `• ${point}\n`;
+            });
+            
+            // Create ethical statement
+            let ethicalStatement = `While I respect the confidentiality of my previous work, I can share industry-level insights and approaches that could benefit your team's strategy and execution.`;
+            
+            // Create call to action
+            let callToAction = '';
+            if (recipientRole === 'hiring_manager' || recipientRole === 'cs_leader') {
+                callToAction = `Would you be available for a brief conversation to discuss how my background might align with your needs at ${mapping.competitor}? I'm particularly interested in learning more about your approach to [specific aspect of business relevant to role].`;
+            } else if (recipientRole === 'recruiter') {
+                callToAction = `I've attached my resume for your review and would welcome the opportunity to discuss how my experience could benefit ${mapping.competitor}. I'm available for an interview at your convenience.`;
+            } else {
+                callToAction = `I'd love to catch up and learn more about what you're working on at ${mapping.competitor}. Would you be open to a brief conversation in the coming weeks?`;
+            }
+            
+            // Create closing
+            let closing = `Thank you for your consideration.\n\nBest regards,\n${yourName}`;
+            
+            // Assemble full template
+            let template = `Subject: ${subjectLine}\n\n${greeting}\n\n${introduction}\n\n${marketInsight}\n\n${valueProposition}\n\n${valuePointsList}\n${ethicalStatement}\n\n${callToAction}\n\n${closing}`;
+            
+            return template;
+        }
+        
+        // Generate LinkedIn template (shorter version)
+        function generateLinkedInTemplate(
+            mapping,
+            targetRole,
+            specificExpertise,
+            uniqueInsight,
+            selectedKnowledge,
+            yourName
+        ) {
+            // Create greeting and introduction (keeping it shorter for LinkedIn)
+            let greeting = 'Hi [Recipient Name],';
+            
+            let introduction = `I'm exploring ${targetRole} opportunities and am particularly interested in ${mapping.competitor} given your position in the ${mapping.industrySegment} market.`;
+            
+            // Create abbreviated insight paragraph
+            let insightParagraph = `My background in ${specificExpertise} has given me valuable perspective on challenges like ${mapping.challenges.split(',')[0]}. `;
+            
+            if (selectedKnowledge.includes('knowledge_trends')) {
+                insightParagraph += `One industry trend I've observed: ${uniqueInsight.split('.')[0]}.`;
+            }
+            
+            // Create brief value proposition
+            let valueProposition = `I believe I could bring valuable market insights to your team while respecting all confidentiality obligations from my previous work.`;
+            
+            // Create call to action
+            let callToAction = `Would you be open to a brief conversation about your CS needs? I'd appreciate the opportunity to learn more about ${mapping.competitor}'s approach.`;
+            
+            // Create closing
+            let closing = `Thanks for considering,\n${yourName}`;
+            
+            // Assemble full template (keeping it under LinkedIn's character limit)
+            let template = `${greeting}\n\n${introduction}\n\n${insightParagraph}\n\n${valueProposition}\n\n${callToAction}\n\n${closing}`;
+            
+            return template;
+        }
+        
+        // Generate follow-up template
+        function generateFollowUpTemplate(
+            mapping,
+            targetRole,
+            platform,
+            yourName
+        ) {
+            let subject = '';
+            if (platform === 'email') {
+                subject = `Subject: Following up - ${targetRole} opportunity at ${mapping.competitor}\n\n`;
+            }
+            
+            let greeting = 'Hi [Recipient Name],';
+            
+            let followUp = `I wanted to follow up on my previous message about the ${targetRole} role at ${mapping.competitor}. I'm still very interested in the opportunity to bring my ${mapping.industrySegment} market insights to your team.`;
+            
+            let additionalValue = `Since my last message, I came across this interesting article about [relevant industry trend] that might be of interest: [Article link/title]. This aligns with some of the approaches I've found effective when addressing challenges like ${mapping.challenges.split(',')[0]}.`;
+            
+            let callToAction = `I'm available to discuss how my experience could benefit your team. Would you have 15-20 minutes for a brief conversation next week?`;
+            
+            let closing = `Thank you for your consideration.\n\nBest regards,\n${yourName}`;
+            
+            let template = `${subject}${greeting}\n\n${followUp}\n\n${additionalValue}\n\n${callToAction}\n\n${closing}`;
+            
+            return template;
+        }
+        
+        // Export results as PDF
+        function exportResultsAsPDF() {
+            // Get the results element
+            const resultsElement = document.getElementById('results');
+            
+            // Create a temp div with a branded header
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = `
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <img src="../calculators/thecscafe.png" alt="The CS Cafe Logo" style="max-width: 200px;">
+                    <h1 style="color: #2c3e50;">Competitive Insight Outreach Templates</h1>
+                    <p>Generated on ${new Date().toLocaleDateString()}</p>
+                </div>
+            `;
+            
+            // Clone the results content but remove copy buttons
+            const resultsContent = resultsElement.cloneNode(true);
+            const copyButtons = resultsContent.querySelectorAll('.copy-button, .copied-message');
+            copyButtons.forEach(button => button.parentNode.removeChild(button));
+            
+            tempDiv.appendChild(resultsContent);
+            
+            // Configure pdf options
+            const options = {
+                margin: [15, 15, 15, 15],
+                filename: 'competitive-insight-templates.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            
+            // Generate and download the PDF
+            html2pdf().from(tempDiv).set(options).save();
+        }
+        
+        // Initialize with one mapping entry
+        window.onload = function() {
+            addMappingEntry();
+        };
+    </script>
+</body>
+</html>
