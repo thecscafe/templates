@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Perfect 6 Questions | Sales-to-CS Handoff Template</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 200px;
+            height: auto;
+        }
+        .instructions {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #edf7ff;
+            border: 1px solid #d4e6f1;
+            border-radius: 5px;
+            display: none;
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-family: inherit;
+            font-size: 16px;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .form-section {
+            background-color: #f8f8f8;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .form-hint {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 3px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .section-title h3 {
+            margin: 0;
+            color: #2c3e50;
+        }
+        .section-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .rating-container {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .rating-container input[type="radio"] {
+            margin-right: 5px;
+        }
+        .rating-container label {
+            display: inline-block;
+            margin-right: 15px;
+        }
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .radio-item {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>The Perfect 6 Questions</h1>
+        <div class="logo">
+            <!-- Replace with your actual logo URL -->
+            <img src="https://thecscafe.com/assets/logo.png" alt="The CS Cafe Logo">
+        </div>
+        
+        <div class="instructions">
+            <p><strong>Complete this form before marking any deal as "Closed-Won" in the CRM.</strong> These 6 questions ensure a smooth customer onboarding experience and reduce follow-up questions after the sale.</p>
+            <p>When all fields are complete, you can export the document as a PDF to share with your Customer Success team.</p>
+        </div>
+        
+        <form id="handoffForm">
+            <!-- Deal Information Section -->
+            <div class="form-section">
+                <div class="section-title">
+                    <div class="section-number">1</div>
+                    <h3>Deal Information</h3>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customer_name">Customer/Company Name:</label>
+                    <input type="text" id="customer_name" placeholder="e.g., Acme Corporation" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="deal_owner">Deal Owner:</label>
+                    <input type="text" id="deal_owner" placeholder="Your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="close_date">Deal Close Date:</label>
+                    <input type="date" id="close_date" required>
+                </div>
+            </div>
+            
+            <!-- Question 1 -->
+            <div class="form-section">
+                <div class="section-title">
+                    <div class="section-number">2</div>
+                    <h3>Expected Business Outcome</h3>
+                </div>
+                
+                <div class="form-group">
+                    <label for="business_outcome">What's their #1 expected business outcome?</label>
+                    <textarea id="business_outcome" placeholder="Focus on the business result they want, not just features they asked about. Example: 'Reduce customer churn by 15% within 6 months'" required></textarea>
+                    <div class="form-hint">Describe the specific measurable result they hope to achieve with our solution</div>
+                </div>
+            </div>
+            
+            <!-- Question 2 -->
+            <div class="form-section">
+                <div class="section-title">
+                    <div class="section-number">3</div>
+                    <h3>Key Stakeholders</h3>
+                </div>
+                
+                <div class="form-group">
+                    <label for="day_to_day_users">Who are the day-to-day users?</label>
+                    <textarea id="day_to_day_users" placeholder="Include names, job titles, and contact information of the people who will use our solution regularly" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="executive_sponsors">Who are the executive sponsors?</label>
+                    <textarea id="executive_sponsors" placeholder="Include names, job titles, and contact information of decision-makers who approved the purchase and care about ROI" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="technical_contact">Who is the technical contact?</label>
+                    <input type="text" id="technical_contact" placeholder="Name, title, and contact info of person who will help with implementation">
+                </div>
+            </div>
+            
+            <!-- Question 3 -->
+            <div class="form-section">
+                <div class="section-title">
+                    <div class="section-number">4</div>
+                    <h3>Timeline Expectations</h3>
+                </div>
+                
+                <div class="form-group">
+                    <label for="implementation_start">Expected implementation start date:</label>
+                    <input type="date" id="implementation_start" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="go_live_date">Promised "go-live" date (if any):</label>
+                    <input type="date" id="go_live_date">
+                </div>
+                
+                <div class="form-group">
+                    <label for="key_deadlines">Any deadline-driven events tied to our solution?</label>
+                    <textarea id="key_deadlines" placeholder="Example: 'Product launch on June 15' or 'Annual sales kickoff in Q3'"></textarea>
+                </div>
+            </div>
+            
+            <!-- Question 4 -->
+            <div class="form-section">
+                <div class="section-title">
+                    <div class="section-number">5</div>
+                    <h3>Commitments & Promises</h3>
+                </div>
+                
+                <div class="form-group">
+                    <label for="specific_promises">Were any specific commitments or promises made during sales conversations?</label>
+                    <textarea id="specific_promises" placeholder="Include any features, services, or support arrangements discussed that might not be standard" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="custom_requirements">Any custom requirements discussed?</label>
+                    <textarea id="custom_requirements" placeholder="Describe any customizations, integrations, or special configurations that were discussed"></textarea>
+                </div>
+            </div>
+            
+            <!-- Question 5 -->
+            <div class="form-section">
+                <div class="section-title">
+                    <div class="section-number">6</div>
+                    <h3>Competitive Context</h3>
+                </div>
+                
+                <div class="form-group">
+                    <label for="competing_solutions">What competing solutions did they evaluate?</label>
+                    <input type="text" id="competing_solutions" placeholder="List the other vendors/solutions they considered" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="why_chosen">Why did they choose us?</label>
+                    <textarea id="why_chosen" placeholder="What were the key decision factors that led them to select our solution?" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="competitor_features">Any competitor features they wished we had?</label>
+                    <textarea id="competitor_features" placeholder="Note any features from competitors that the customer mentioned liking"></textarea>
+                </div>
+            </div>
+            
+            <!-- Question 6 -->
+            <div class="form-section">
+                <div class="section-title">
+                    <div class="section-number">7</div>
+                    <h3>Technical Sophistication</h3>
+                </div>
+                
+                <div class="form-group">
+                    <label>On a scale of 1-5, how technically sophisticated is this customer?</label>
+                    <div class="form-hint">1 = Needs significant guidance, 5 = Highly technical, minimal support needed</div>
+                    
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="tech_rating_1" name="tech_rating" value="1" required>
+                            <label for="tech_rating_1">1 - Basic</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="tech_rating_2" name="tech_rating" value="2">
+                            <label for="tech_rating_2">2 - Below Average</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="tech_rating_3" name="tech_rating" value="3">
+                            <label for="tech_rating_3">3 - Average</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="tech_rating_4" name="tech_rating" value="4">
+                            <label for="tech_rating_4">4 - Above Average</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="tech_rating_5" name="tech_rating" value="5">
+                            <label for="tech_rating_5">5 - Expert</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tech_explanation">Explanation for your rating:</label>
+                    <textarea id="tech_explanation" placeholder="Why did you select this rating? Include examples of their technical capability or limitations"></textarea>
+                </div>
+            </div>
+            
+            <!-- Additional Context -->
+            <div class="form-section">
+                <div class="section-title">
+                    <div class="section-number">8</div>
+                    <h3>Additional Context</h3>
+                </div>
+                
+                <div class="form-group">
+                    <label for="additional_context">Anything else the CS team should know about this customer?</label>
+                    <textarea id="additional_context" placeholder="Previous experiences with our company, unique challenges, industry-specific considerations, etc."></textarea>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <button type="button" onclick="validateAndGeneratePDF()" class="button">Generate Handoff Document</button>
+            </div>
+        </form>
+        
+        <div id="results" class="results">
+            <h2>Handoff Document Generated</h2>
+            <p>Your CS Handoff Document has been created successfully!</p>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button onclick="exportResultsAsPDF()" class="button">Download as PDF</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Validate form and generate PDF preview
+        function validateAndGeneratePDF() {
+            // Check if all required fields are filled
+            const requiredFields = document.querySelectorAll('[required]');
+            let allFilled = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value) {
+                    allFilled = false;
+                    field.style.borderColor = 'red';
+                } else {
+                    field.style.borderColor = '#ddd';
+                }
+            });
+            
+            // Check if radio button is selected
+            const radioButtons = document.querySelectorAll('input[name="tech_rating"]');
+            let radioSelected = false;
+            
+            radioButtons.forEach(radio => {
+                if (radio.checked) {
+                    radioSelected = true;
+                }
+            });
+            
+            if (!radioSelected) {
+                allFilled = false;
+                document.querySelector('.radio-group').style.borderColor = 'red';
+            } else {
+                document.querySelector('.radio-group').style.borderColor = '#ddd';
+            }
+            
+            if (!allFilled) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Show the results section
+            document.getElementById('results').style.display = 'block';
+            
+            // Scroll to results section
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Export results as PDF
+        function exportResultsAsPDF() {
+            // Create a temp div with form data formatted for PDF
+            const tempDiv = document.createElement('div');
+            tempDiv.style.padding = '20px';
+            
+            // Add header with logo and title
+            tempDiv.innerHTML = `
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <img src="https://thecscafe.com/assets/logo.png" alt="The CS Cafe Logo" style="max-width: 150px;">
+                    <h1 style="color: #2c3e50; margin-top: 10px;">Sales-to-CS Handoff Document</h1>
+                </div>
+                
+                <div style="background-color: #f5f7fa; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td><strong>Customer:</strong></td>
+                            <td>${document.getElementById('customer_name').value}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Deal Owner:</strong></td>
+                            <td>${document.getElementById('deal_owner').value}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Close Date:</strong></td>
+                            <td>${formatDate(document.getElementById('close_date').value)}</td>
+                        </tr>
+                    </table>
+                </div>
+            `;
+            
+            // Add each question and answer
+            tempDiv.innerHTML += `
+                <h3>1. Expected Business Outcome</h3>
+                <p>${document.getElementById('business_outcome').value}</p>
+                
+                <h3>2. Key Stakeholders</h3>
+                <p><strong>Day-to-day users:</strong><br>${document.getElementById('day_to_day_users').value}</p>
+                <p><strong>Executive sponsors:</strong><br>${document.getElementById('executive_sponsors').value}</p>
+                <p><strong>Technical contact:</strong><br>${document.getElementById('technical_contact').value || 'N/A'}</p>
+                
+                <h3>3. Timeline Expectations</h3>
+                <p><strong>Implementation start:</strong> ${formatDate(document.getElementById('implementation_start').value)}</p>
+                <p><strong>Go-live date:</strong> ${document.getElementById('go_live_date').value ? formatDate(document.getElementById('go_live_date').value) : 'Not specified'}</p>
+                <p><strong>Key deadlines:</strong><br>${document.getElementById('key_deadlines').value || 'None specified'}</p>
+                
+                <h3>4. Commitments & Promises</h3>
+                <p><strong>Specific promises:</strong><br>${document.getElementById('specific_promises').value}</p>
+                <p><strong>Custom requirements:</strong><br>${document.getElementById('custom_requirements').value || 'None specified'}</p>
+                
+                <h3>5. Competitive Context</h3>
+                <p><strong>Competing solutions:</strong> ${document.getElementById('competing_solutions').value}</p>
+                <p><strong>Why they chose us:</strong><br>${document.getElementById('why_chosen').value}</p>
+                <p><strong>Competitor features they liked:</strong><br>${document.getElementById('competitor_features').value || 'None specified'}</p>
+                
+                <h3>6. Technical Sophistication</h3>
+                <p><strong>Rating:</strong> ${getSelectedRating()} / 5</p>
+                <p><strong>Explanation:</strong><br>${document.getElementById('tech_explanation').value || 'No explanation provided'}</p>
+            `;
+            
+            // Add additional context if provided
+            const additionalContext = document.getElementById('additional_context').value;
+            if (additionalContext) {
+                tempDiv.innerHTML += `
+                    <h3>Additional Context</h3>
+                    <p>${additionalContext}</p>
+                `;
+            }
+            
+            // Add footer with generation date
+            tempDiv.innerHTML += `
+                <div style="margin-top: 30px; border-top: 1px solid #ddd; padding-top: 10px; font-size: 0.9em; color: #777; text-align: center;">
+                    <p>Generated on ${new Date().toLocaleDateString()} | TheCSCafe.com</p>
+                </div>
+            `;
+            
+            // Configure PDF options
+            const options = {
+                margin: 10,
+                filename: `${document.getElementById('customer_name').value.replace(/\s+/g, '_')}_handoff_document.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            
+            // Generate and download the PDF
+            html2pdf().from(tempDiv).set(options).save();
+        }
+        
+        // Helper function to format dates
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+        
+        // Helper function to get selected rating
+        function getSelectedRating() {
+            const radioButtons = document.querySelectorAll('input[name="tech_rating"]');
+            for (const radio of radioButtons) {
+                if (radio.checked) {
+                    return radio.value;
+                }
+            }
+            return '';
+        }
+    </script>
+</body>
+</html>
