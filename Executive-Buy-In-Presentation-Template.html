@@ -447,29 +447,7 @@
             </div>
         </div>
         
-        <div style="text-align: center; margin: 30px 0;">
-            <button class="button" onclick="window.print()">Print Presentation</button>
-            <button class="button" onclick="generatePDF()">Download as PDF</button>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script>
-function generatePDF() {
-  const element = document.querySelector('.container');
-  const opt = {
-    margin: 1,
-    filename: 'ExecutiveBuyInTemplate.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-    pagebreak: { mode: 'avoid-all' }  // Add this line
-  };
-  
-  html2pdf().set(opt).from(element).save();
-}
-
-</script>
-
-        </div>
+      
     </div>
 </body>
 </html>
